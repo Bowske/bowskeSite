@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="hero-header">
     <Avatar />
     <Hamburger />
   </div>
@@ -10,7 +10,7 @@ import Avatar from "@/../public/avatar.svg";
 import Hamburger from "@/components/Hamburger.vue";
 
 export default {
-  name: "Header",
+  name: "HeroHeader",
   components: {
     Avatar,
     Hamburger,
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header {
+.hero-header {
   height: 10vh;
   width: 100%;
   display: flex;
