@@ -25,7 +25,7 @@ export default {
 .hero-header {
   z-index: 3;
   position: fixed;
-  height: 10vh;
+  height: 15%;
   width: 100%;
   display: flex;
   align-items: center;

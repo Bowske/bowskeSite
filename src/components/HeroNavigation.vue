@@ -44,13 +44,13 @@ export default {
   background-color: $light-background;
 
   &__content {
-    min-height: 90%;
-    position: absolute;
-    bottom: 0;
     display: flex;
     width: 100%;
+    height: 90%;
+    position: absolute;
+    bottom: 0;
     justify-content: center;
-    padding: 42px 0;
+    padding: 24px 0;
 
     .hero-navigation__ul {
       list-style: none;

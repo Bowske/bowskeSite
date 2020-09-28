@@ -12,6 +12,18 @@ export default {
   components: {
     HeroSection,
   },
+  created() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    window.addEventListener("resize", () => {
+      // We execute the same script as before
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    });
+  },
+  destroyed() {
+    window.removeEventListener("resize");
+  },
 };
 </script>
 
@@ -23,10 +35,26 @@ export default {
   margin: 0;
   box-sizing: border-box;
 }
-#app {
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: $primary-font-color;
+
+@media (max-width: 600px) {
+  #app {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    color: $primary-font-color;
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100vw;
+  }
+}
+@media (min-width: 600px) {
+  #app {
+    height: 100vh;
+    color: $primary-font-color;
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100vw;
+  }
 }
 </style>
