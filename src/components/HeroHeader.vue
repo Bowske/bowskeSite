@@ -1,6 +1,9 @@
 <template>
   <div class="hero-header">
-    <avatar />
+    <div class="hero-header__wrapper">
+      <avatar />
+      <span class="hero-header__span">Adam Borowski</span>
+    </div>
     <hamburger />
   </div>
 </template>
@@ -20,11 +23,22 @@ export default {
 
 <style lang="scss" scoped>
 .hero-header {
+  z-index: 3;
+  position: fixed;
   height: 10vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 14px;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+  &__span {
+    font-weight: 600;
+    padding-left: 10px;
+  }
 }
 </style>

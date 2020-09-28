@@ -1,15 +1,18 @@
 <template>
   <div class="hero-section">
     <hero-header />
+    <hero-navigation />
   </div>
 </template>
 
 <script>
 import HeroHeader from "@/components/HeroHeader.vue";
+import HeroNavigation from "@/components/HeroNavigation.vue";
 export default {
   name: "HeroSection",
   components: {
     HeroHeader,
+    HeroNavigation,
   },
 };
 </script>

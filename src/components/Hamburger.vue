@@ -1,8 +1,8 @@
 <template>
   <button
     class="hamburger"
-    :class="{ 'hamburger--active': isActive }"
-    @click="isActive = !isActive"
+    :class="{ 'hamburger--active': isHamburgerClicked }"
+    @click="changeStateOfHamburger"
   >
     <span class="hamburger__box">
       <span class="hamburger__inner"></span>
@@ -18,6 +18,16 @@ export default {
       isActive: false,
     };
   },
+  methods: {
+    changeStateOfHamburger() {
+      this.$store.commit("clickHamburger");
+    },
+  },
+  computed: {
+    isHamburgerClicked() {
+      return this.$store.state.isHamburgerClicked;
+    },
+  },
 };
 </script>
 
@@ -28,6 +38,9 @@ export default {
   cursor: pointer;
   background-color: transparent;
   border: 0;
+  &:focus {
+    outline: 0;
+  }
 
   &__box {
     width: 28px;
