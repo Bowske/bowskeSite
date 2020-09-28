@@ -16,15 +16,17 @@ export default {
 </script>
 
 <style lang="scss">
-$primary-font-color: #2c3e50;
-$secondary-font-color: #6c63ff;
-
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: $primary-font-color;
-  margin-top: 60px;
 }
 </style>
