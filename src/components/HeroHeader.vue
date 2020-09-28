@@ -1,7 +1,7 @@
 <template>
   <div class="hero-header">
-    <Avatar />
-    <Hamburger />
+    <avatar />
+    <hamburger />
   </div>
 </template>
 
@@ -26,8 +26,5 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 0 14px;
-
-  &__avatar {
-  }
 }
 </style>
