@@ -2,7 +2,7 @@
   <div class="hero-header">
     <div class="hero-header__wrapper">
       <avatar />
-      <span class="hero-header__span">bowske</span>
+      <span class="hero-header__span">huj</span>
     </div>
     <hamburger />
   </div>
@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss" scoped>
 .hero-header {
-  z-index: 3;
+  z-index: 1234;
   position: fixed;
   height: 10%;
   width: 100vw;

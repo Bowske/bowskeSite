@@ -81,11 +81,13 @@ export default {
 
 <style lang="scss" scoped>
 .hero-navigation {
-  z-index: 2;
+  z-index: 999;
+  position: relative;
   height: 100%;
   width: 100%;
   background-color: $light-background;
-  visibility: hidden;
+  transform: translate(-100%, 0);
+  // DISPLAY NONE RATUJE SYTUACJE TODO
 
   &__content {
     display: flex;
@@ -102,7 +104,7 @@ export default {
       flex-direction: column;
       align-items: flex-end;
       position: absolute;
-      right: 14px;
+      right: 24px;
 
       font-size: 25px;
 
