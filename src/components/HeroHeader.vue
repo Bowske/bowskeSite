@@ -2,7 +2,7 @@
   <div class="hero-header">
     <div class="hero-header__wrapper">
       <avatar />
-      <span class="hero-header__span">Adam Borowski</span>
+      <span class="hero-header__span">bowske</span>
     </div>
     <hamburger />
   </div>
@@ -25,8 +25,8 @@ export default {
 .hero-header {
   z-index: 3;
   position: fixed;
-  height: 15%;
-  width: 100%;
+  height: 10%;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;

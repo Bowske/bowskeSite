@@ -63,13 +63,32 @@ export default {
     }
   }
 }
+// OPACITY TEXT ANIMATION
+.hero-nav-enter-active .hero-navigation__li {
+  transition: opacity 1s ease-in;
+}
+.hero-nav-leave-active .hero-navigation__li {
+  transition: opacity 1s ease-out;
+}
 
+.hero-nav-enter .hero-navigation__li {
+  opacity: 0;
+}
+.hero-nav-enter-to .hero-navigation__li {
+  opacity: 1;
+}
+.hero-nav-leave-to .hero-navigation__li {
+  opacity: 0;
+}
+//
+
+//SLIDING IN NAVIGATION ANIMATION
 .hero-nav-enter-active,
 .hero-nav-leave-active {
-  transition: transform 1s 0.1s ease;
+  transition: transform 1s ease 0.1s;
 }
 .hero-nav-enter {
-  transform: translate(-100%, -100%);
+  transform: translate(-100%, 0);
 }
 .hero-nav-enter-to {
   transform: translate(0, 0);
@@ -77,4 +96,5 @@ export default {
 .hero-nav-leave-to {
   transform: translate(100%, 0);
 }
+//
 </style>

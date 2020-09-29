@@ -6,6 +6,10 @@
 
 <script>
 import HeroSection from "@/components/HeroSection.vue";
+import {
+  vhMobile,
+  vhMobileRemoveListener,
+} from "@/configFunctions/vhMobile.js";
 
 export default {
   name: "App",
@@ -13,16 +17,10 @@ export default {
     HeroSection,
   },
   created() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-    window.addEventListener("resize", () => {
-      // We execute the same script as before
-      let vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    });
+    vhMobile();
   },
   destroyed() {
-    window.removeEventListener("resize");
+    vhMobileRemoveListener();
   },
 };
 </script>
@@ -38,23 +36,15 @@ export default {
 
 @media (max-width: 600px) {
   #app {
-    height: 100vh;
+    @include app-setup;
     height: calc(var(--vh, 1vh) * 100);
     color: $primary-font-color;
-    font-family: Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    width: 100vw;
   }
 }
 @media (min-width: 600px) {
   #app {
-    height: 100vh;
+    @include app-setup;
     color: $primary-font-color;
-    font-family: Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    width: 100vw;
   }
 }
 </style>
