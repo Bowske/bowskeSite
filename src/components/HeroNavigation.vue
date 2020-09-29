@@ -1,36 +1,57 @@
 <template>
-  <transition name="hero-nav">
-    <div class="hero-navigation" v-show="isHamburgerClicked">
-      <nav class="hero-navigation__content">
-        <ul class="hero-navigation__ul">
-          <li
-            class="hero-navigation__li"
-            v-for="elem in navigationElems"
-            :key="elem.name"
-          >
-            {{ elem.name }}
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </transition>
+  <div ref="heroNavigation" class="hero-navigation">
+    <nav class="hero-navigation__content">
+      <ul class="hero-navigation__ul">
+        <li
+          class="hero-navigation__li"
+          v-for="elem in navigationElems"
+          :key="elem.name"
+        >
+          {{ elem.name }}
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>
+import gsap from "gsap";
+
 export default {
   name: "HeroNavigation",
   data() {
     return {
       navigationElems: [
-        { name: "O mnie", route: "/o_mnie" },
+        { name: "Home", route: "/home" },
         { name: "Projekty", route: "/projekty" },
+        { name: "O mnie", route: "/o_mnie" },
         { name: "Inspiracja", route: "/inspiracja" },
       ],
     };
   },
+  created() {},
   computed: {
     isHamburgerClicked() {
       return this.$store.state.isHamburgerClicked;
+    },
+  },
+  watch: {
+    "$store.state.isHamburgerClicked": function () {
+      const hamburgerState = this.$store.state.isHamburgerClicked;
+      const heroNavigation = this.$refs.heroNavigation;
+
+      // const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
+      if (hamburgerState) {
+        gsap.set([heroNavigation], { autoAlpha: 0 });
+        console.log(hamburgerState);
+        gsap.fromTo(
+          heroNavigation,
+          { x: "-100%" },
+          { duration: 1, x: "+=100%", autoAlpha: 1 }
+        );
+      } else {
+        gsap.to(heroNavigation, { duration: 1, x: "+=100%", autoAlpha: 0 });
+      }
     },
   },
 };
@@ -42,6 +63,7 @@ export default {
   height: 100%;
   width: 100%;
   background-color: $light-background;
+  visibility: hidden;
 
   &__content {
     display: flex;
@@ -63,38 +85,4 @@ export default {
     }
   }
 }
-// OPACITY TEXT ANIMATION
-.hero-nav-enter-active .hero-navigation__li {
-  transition: opacity 1s ease-in;
-}
-.hero-nav-leave-active .hero-navigation__li {
-  transition: opacity 1s ease-out;
-}
-
-.hero-nav-enter .hero-navigation__li {
-  opacity: 0;
-}
-.hero-nav-enter-to .hero-navigation__li {
-  opacity: 1;
-}
-.hero-nav-leave-to .hero-navigation__li {
-  opacity: 0;
-}
-//
-
-//SLIDING IN NAVIGATION ANIMATION
-.hero-nav-enter-active,
-.hero-nav-leave-active {
-  transition: transform 1s ease 0.1s;
-}
-.hero-nav-enter {
-  transform: translate(-100%, 0);
-}
-.hero-nav-enter-to {
-  transform: translate(0, 0);
-}
-.hero-nav-leave-to {
-  transform: translate(100%, 0);
-}
-//
 </style>
