@@ -1,10 +1,14 @@
 <template>
   <div class="hero-section">
     <hero-header />
-    <div class="hero-section__svg-wrapper">
-      <hero-svg />
-    </div>
+
     <hero-navigation />
+    <div class="hero-section__content-wrapper">
+      <div class="hero-section__svg-wrapper">
+        <h1 class="hero-section__heading">Hej, jestem <span>Adam</span></h1>
+        <hero-svg />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -29,9 +33,20 @@ export default {
   background: $hero-background;
   &__content-wrapper {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     .hero-section__svg-wrapper {
       width: 80vw; // tu bedzie trzeba duzo ogarniania z mobilka i desktopem responisvness
       height: auto;
+
+      .hero-section__heading {
+        margin-bottom: 30px;
+
+        span {
+          color: $secondary-font-color;
+        }
+      }
     }
   }
 }

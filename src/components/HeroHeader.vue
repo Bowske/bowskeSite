@@ -2,7 +2,7 @@
   <div class="hero-header">
     <div class="hero-header__wrapper">
       <avatar />
-      <span class="hero-header__span">huj</span>
+      <span class="hero-header__span">bowske</span>
     </div>
     <hamburger />
   </div>
