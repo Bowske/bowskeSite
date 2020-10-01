@@ -8,7 +8,9 @@
         <h1 class="hero-section__heading" ref="headingRef">
           Hej, jestem <span ref="colorRef">Adam</span>
         </h1>
-        <hero-svg ref="svgRef" />
+        <div ref="sceneWrapper">
+          <hero-svg />
+        </div>
       </div>
     </div>
   </div>
@@ -38,7 +40,7 @@ export default {
       )
         .to(headingRef, { duration: "0.5", width: "7.25em", ease: "steps(4)" })
         .to(colorRef, { duration: "0", color: "#6c63ff" })
-        .to(headingRef, { duration: "0.5", width: "9.78em", ease: "steps(4)" });
+        .to(headingRef, { duration: "0.5", width: "9.78em", ease: "steps(4)" }); //8.78 i 6.55
 
       gsap.fromTo(
         headingRef,
@@ -52,14 +54,38 @@ export default {
       );
     },
     svgHeroImageAnimation() {
-      // const tl = gsap.timeline();
-      const svgRef = this.$refs.svgRef;
-      const [elements] = svgRef.children;
+      const [elements] = this.$refs.sceneWrapper.children;
 
       const desk = elements.getElementById("desk");
       const character = elements.getElementById("character");
       const setup = elements.getElementById("setup");
       const particles = elements.getElementById("particles");
+
+      gsap.set([desk, character, setup, particles], { autoAlpha: 0 });
+
+      const tlHero = gsap.timeline({ defaults: { ease: "power3.inOut" } });
+
+      tlHero
+        .fromTo(
+          desk,
+          { x: "-100%" },
+          { duration: 1, x: "+=100%", autoAlpha: 1 }
+        )
+        .fromTo(
+          setup,
+          { x: "-100%" },
+          { duration: 1, x: "+=100%", autoAlpha: 1 }
+        )
+        .fromTo(
+          particles,
+          { opacity: "0" },
+          { duration: 1, opacity: "1", autoAlpha: 1 }
+        );
+      gsap.fromTo(
+        character,
+        { opacity: "0" },
+        { duration: 1, delay: 2.5, x: "1", autoAlpha: 1 }
+      );
     },
   },
   mounted() {
