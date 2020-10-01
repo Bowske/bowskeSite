@@ -8,7 +8,7 @@
         <h1 class="hero-section__heading" ref="headingRef">
           Hej, jestem <span ref="colorRef">Adam</span>
         </h1>
-        <hero-svg />
+        <hero-svg ref="svgRef" />
       </div>
     </div>
   </div>
@@ -26,29 +26,45 @@ export default {
     HeroNavigation,
     HeroSvg,
   },
-  mounted() {
-    const tl = gsap.timeline();
-    const headingRef = this.$refs.headingRef;
-    const colorRef = this.$refs.colorRef;
-    tl.fromTo(
-      headingRef,
-      { width: "0" },
-      { duration: "4", width: "9.78em", ease: "steps(16)" }
-    )
-      .to(headingRef, { duration: "1", width: "7.25em", ease: "steps(4)" })
-      .to(colorRef, { duration: "0", color: "#6c63ff" })
-      .to(headingRef, { duration: "1", width: "9.78em", ease: "steps(4)" });
+  methods: {
+    typeWriterAnimation() {
+      const tl = gsap.timeline();
+      const headingRef = this.$refs.headingRef;
+      const colorRef = this.$refs.colorRef;
+      tl.fromTo(
+        headingRef,
+        { width: "0" },
+        { duration: "2", width: "9.78em", ease: "steps(16)" }
+      )
+        .to(headingRef, { duration: "0.5", width: "7.25em", ease: "steps(4)" })
+        .to(colorRef, { duration: "0", color: "#6c63ff" })
+        .to(headingRef, { duration: "0.5", width: "9.78em", ease: "steps(4)" });
 
-    gsap.fromTo(
-      headingRef,
-      { "border-right-color": "rgba(138, 123, 123, 0.2)" },
-      {
-        "border-right-color": "black",
-        duration: "0.5",
-        // ease: "steps(24)",
-        repeat: "-1",
-      }
-    );
+      gsap.fromTo(
+        headingRef,
+        { "border-right-color": "rgba(138, 123, 123, 0.2)" },
+        {
+          "border-right-color": "black",
+          duration: "0.5",
+          // ease: "steps(24)",
+          repeat: "-1",
+        }
+      );
+    },
+    svgHeroImageAnimation() {
+      // const tl = gsap.timeline();
+      const svgRef = this.$refs.svgRef;
+      const [elements] = svgRef.children;
+
+      const desk = elements.getElementById("desk");
+      const character = elements.getElementById("character");
+      const setup = elements.getElementById("setup");
+      const particles = elements.getElementById("particles");
+    },
+  },
+  mounted() {
+    this.typeWriterAnimation();
+    this.svgHeroImageAnimation();
   },
 };
 </script>
