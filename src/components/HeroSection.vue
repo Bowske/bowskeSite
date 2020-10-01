@@ -33,11 +33,11 @@ export default {
     tl.fromTo(
       headingRef,
       { width: "0" },
-      { duration: "4", width: "8.78em", ease: "steps(16)" }
+      { duration: "4", width: "9.78em", ease: "steps(16)" }
     )
-      .to(headingRef, { duration: "1", width: "6.55em", ease: "steps(4)" })
+      .to(headingRef, { duration: "1", width: "7.25em", ease: "steps(4)" })
       .to(colorRef, { duration: "0", color: "#6c63ff" })
-      .to(headingRef, { duration: "1", width: "8.78em", ease: "steps(4)" });
+      .to(headingRef, { duration: "1", width: "9.78em", ease: "steps(4)" });
 
     gsap.fromTo(
       headingRef,
