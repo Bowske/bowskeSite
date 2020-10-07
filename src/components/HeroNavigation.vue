@@ -3,17 +3,20 @@
     <nav class="hero-navigation__content">
       <ul class="hero-navigation__ul">
         <li
+          @click="hideMenu()"
           class="hero-navigation__li"
           v-for="elem in navigationElems"
           :key="elem.name"
         >
-          <a href="">
-            {{ elem.name }}
-          </a>
+          {{ elem.name }}
         </li>
       </ul>
       <div class="hero-navigation__footer">
-        <button ref="githubButton" class="hero-navigation__button">
+        <button
+          @click="hideMenu()"
+          ref="githubButton"
+          class="hero-navigation__button"
+        >
           <Github />
           <span>Github</span>
         </button>
@@ -41,6 +44,11 @@ export default {
       ],
     };
   },
+  methods: {
+    hideMenu() {
+      this.$store.commit("clickHamburger");
+    },
+  },
   created() {},
   computed: {
     isHamburgerClicked() {
@@ -59,17 +67,17 @@ export default {
         console.log(hamburgerState);
         tl.fromTo(
           heroNavigation,
-          { x: "-100%" },
-          { duration: 1, x: "+=100%", autoAlpha: 1 }
+          { left: "-100%" },
+          { duration: 1, left: "+=100%", autoAlpha: 1 }
         ).fromTo(
           githubButton,
-          { x: "100%" },
-          { duration: 0.5, x: "-=100%", autoAlpha: 1, ease: "power1.in" }
+          { x: "0" },
+          { duration: 0.5, x: "0", autoAlpha: 1, ease: "power1.in" }
         );
       } else {
         gsap.to(heroNavigation, {
           duration: 1,
-          x: "+=100%",
+          left: "+=100%",
           autoAlpha: 0,
           ease: "power3.inOut",
         });
@@ -82,11 +90,12 @@ export default {
 <style lang="scss" scoped>
 .hero-navigation {
   z-index: 999;
-  position: relative;
+  position: fixed;
   height: 100%;
   width: 100%;
+  left: -100%;
   background-color: $light-background;
-  transform: translate(-100%, 0);
+  // transform: translate(-100%, 0);
   // DISPLAY NONE RATUJE SYTUACJE TODO
 
   &__content {

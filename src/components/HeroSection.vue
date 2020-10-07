@@ -100,6 +100,8 @@ export default {
   height: 100%;
   width: 100%;
   background: $hero-background;
+  position: relative;
+
   &__content-wrapper {
     position: absolute;
     top: 50%;

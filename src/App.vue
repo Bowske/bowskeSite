@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <hero-section />
+    <about-me-section />
   </div>
 </template>
 
 <script>
+import AboutMeSection from "@/components/AboutMeSection.vue";
 import HeroSection from "@/components/HeroSection.vue";
 import {
   vhMobile,
@@ -15,6 +17,7 @@ export default {
   name: "App",
   components: {
     HeroSection,
+    AboutMeSection,
   },
   created() {
     vhMobile();
