@@ -8,10 +8,6 @@
 <script>
 import AboutMeSection from "@/components/AboutMeSection.vue";
 import HeroSection from "@/components/HeroSection.vue";
-import {
-  vhMobile,
-  vhMobileRemoveListener,
-} from "@/configFunctions/vhMobile.js";
 
 export default {
   name: "App",
@@ -20,11 +16,12 @@ export default {
     AboutMeSection,
   },
   created() {
-    vhMobile();
+    setTimeout(function () {
+      window.scrollTo(0, 1);
+    }, 1000);
   },
-  destroyed() {
-    vhMobileRemoveListener();
-  },
+  mounted() {},
+  destroyed() {},
 };
 </script>
 
@@ -37,17 +34,7 @@ export default {
   box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
-  #app {
-    @include app-setup;
-    height: calc(var(--vh, 1vh) * 100);
-    color: $primary-font-color;
-  }
-}
-@media (min-width: 600px) {
-  #app {
-    @include app-setup;
-    color: $primary-font-color;
-  }
+#app {
+  @include app-setup;
 }
 </style>

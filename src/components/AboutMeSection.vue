@@ -66,7 +66,7 @@ export default {
     width: 80%;
     height: 160px;
     margin-top: 10vh;
-    background-color: red;
+    background-color: $secondary-font-color;
   }
 
   &__text {

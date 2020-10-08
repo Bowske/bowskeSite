@@ -7,7 +7,7 @@
 }
 
 @mixin app-setup {
-    overflow-x: hidden;
+    color: $primary-font-color;
     height: 100vh;
     font-family: $mono-font;
     -webkit-font-smoothing: antialiased;
