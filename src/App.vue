@@ -15,13 +15,15 @@ export default {
     HeroSection,
     AboutMeSection,
   },
-  created() {
-    setTimeout(function () {
-      window.scrollTo(0, 1);
-    }, 1000);
-  },
+  created() {},
   mounted() {},
   destroyed() {},
+  watch: {
+    "$store.state.isHamburgerClicked": function () {
+      const app = document.getElementById("app");
+      app.classList.toggle("lockScroll");
+    },
+  },
 };
 </script>
 
@@ -36,5 +38,8 @@ export default {
 
 #app {
   @include app-setup;
+}
+.lockScroll {
+  overflow: hidden;
 }
 </style>
