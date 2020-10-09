@@ -12,18 +12,37 @@
         <p class="aboutMeSection__cvText">wgląd do mojego CV</p>
       </button>
       <div class="aboutMeSection__logos">
-        <div class="aboutMeSection__item"></div>
+        <div class="aboutMeSection__item"><vuelogo /></div>
+        <div class="aboutMeSection__item"><npmlogo /></div>
+        <div class="aboutMeSection__item"><sasslogo /></div>
+        <div class="aboutMeSection__item"><typescriptlogo /></div>
+        <div class="aboutMeSection__item"><vuetifylogo /></div>
+
+        <div class="aboutMeSection__item"><jslogo /></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import jslogo from "@/../public/jslogo.svg";
+import npmlogo from "@/../public/npmlogo.svg";
+import sasslogo from "@/../public/sasslogo.svg";
+import typescriptlogo from "@/../public/typescriptlogo.svg";
+import vuetifylogo from "@/../public/vuetifylogo.svg";
+import vuelogo from "@/../public/vuelogo.svg";
+
 import Cv from "@/../public/cv.svg";
 export default {
   name: "AboutMeSection",
   components: {
     Cv,
+    jslogo,
+    npmlogo,
+    sasslogo,
+    typescriptlogo,
+    vuetifylogo,
+    vuelogo,
   },
 };
 </script>
@@ -60,13 +79,21 @@ export default {
   }
 
   &__item {
+    height: 40px;
+    width: 40px;
+    display: grid;
+    place-items: center;
   }
 
   &__logos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 50px);
+    place-items: center;
+    gap: 30px 50px;
     width: 80%;
-    height: 160px;
-    margin-top: 10vh;
-    background-color: $secondary-font-color;
+    height: auto;
+    margin-top: 5vh;
   }
 
   &__text {
