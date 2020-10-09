@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .aboutMeSection {
-  height: 100%;
+  height: 100vh;
   display: grid;
   place-items: center;
   position: relative;

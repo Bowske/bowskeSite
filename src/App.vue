@@ -6,6 +6,7 @@
 </template>
 
 <script>
+const bodyScrollLock = require("body-scroll-lock");
 import AboutMeSection from "@/components/AboutMeSection.vue";
 import HeroSection from "@/components/HeroSection.vue";
 
@@ -20,8 +21,14 @@ export default {
   destroyed() {},
   watch: {
     "$store.state.isHamburgerClicked": function () {
-      const app = document.getElementById("app");
-      app.classList.toggle("lockScroll");
+      const disableBodyScroll = bodyScrollLock.disableBodyScroll;
+      const enableBodyScroll = bodyScrollLock.enableBodyScroll;
+      const targetElement = document.querySelector("#app");
+      if (this.$store.state.isHamburgerClicked) {
+        disableBodyScroll(targetElement);
+      } else {
+        enableBodyScroll(targetElement);
+      }
     },
   },
 };
@@ -38,8 +45,5 @@ export default {
 
 #app {
   @include app-setup;
-}
-.lockScroll {
-  overflow: hidden;
 }
 </style>

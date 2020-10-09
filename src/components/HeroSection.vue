@@ -97,7 +97,7 @@ export default {
 
 <style lang="scss" scoped>
 .hero-section {
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background: $hero-background;
   position: relative;

@@ -91,7 +91,7 @@ export default {
 .hero-navigation {
   z-index: 999;
   position: fixed;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   left: -100%;
   background-color: $light-background;
