@@ -4,12 +4,13 @@
     <div class="aboutMeSection__wrapper">
       <p class="aboutMeSection__text">
         Jestem studentem 3 roku informatyki na Uniwersytecie Adama Mickiewicza.
-        Kluczowe elementy mojej pracy - dbanie o szczegóły, testowanie nowych
-        rozwiązań, zamiłowanie do UI/UX'u.
+        <span class="aboutMeSection__innerSpan"
+          >Dbam o szczegóły, testuję nowe rozwiązania</span
+        >, posiadam duże zamiłowanie do UI/UX'u.
       </p>
       <button class="aboutMeSection__button">
         <Cv />
-        <p class="aboutMeSection__cvText">wgląd do mojego CV</p>
+        <p class="aboutMeSection__cvText" ref="cvText">wgląd do mojego CV</p>
       </button>
       <div class="aboutMeSection__logos">
         <div class="aboutMeSection__item"><vuelogo /></div>
@@ -25,6 +26,8 @@
 </template>
 
 <script>
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import jslogo from "@/../public/jslogo.svg";
 import npmlogo from "@/../public/npmlogo.svg";
 import sasslogo from "@/../public/sasslogo.svg";
@@ -44,6 +47,67 @@ export default {
     vuetifylogo,
     vuelogo,
   },
+  methods: {
+    settingAutoAlpha() {
+      gsap.set(
+        [
+          ".aboutMeSection__backBar",
+          ".aboutMeSection__text",
+          ".aboutMeSection__innerSpan",
+        ],
+        {
+          autoAlpha: 0,
+        }
+      );
+    },
+    textAnimation() {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".aboutMeSection__text",
+          start: "center bottom",
+        },
+      });
+
+      tl.fromTo(
+        ".aboutMeSection__text",
+        { x: "-100%" },
+        { duration: 1, x: "+=100%", autoAlpha: 1 }
+      )
+        .to(".aboutMeSection__innerSpan", { autoAlpha: 1, duration: 1 })
+        .fromTo(
+          ".aboutMeSection__innerSpan",
+          {
+            backgroundSize: "0% 2px;",
+          },
+          { backgroundSize: "100% 2px", duration: 1.1 }
+        );
+    },
+    backBarAnimation() {
+      gsap.fromTo(
+        ".aboutMeSection__backBar",
+        { height: "0" },
+        {
+          autoAlpha: 1,
+          duration: 2,
+          height: "+=100%",
+          scrollTrigger: {
+            trigger: ".aboutMeSection__backBar",
+            start: "center bottom",
+          },
+        }
+      );
+    },
+    aboutMeAllAnimations() {
+      this.backBarAnimation();
+      this.textAnimation();
+    },
+  },
+  created() {},
+  mounted() {
+    gsap.registerPlugin(ScrollTrigger);
+    this.settingAutoAlpha();
+    this.aboutMeAllAnimations();
+  },
 };
 </script>
 
@@ -58,7 +122,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: 20vw;
+    width: 28vw;
     height: 100%;
     z-index: -1;
     background-color: #f7f7f7;
@@ -74,7 +138,8 @@ export default {
   }
   &__cvText {
     padding-left: 10px;
-    font-size: 1rem;
+    font-weight: bold;
+    font-size: 0.8rem;
     font-family: $mono-font;
   }
 
@@ -83,6 +148,27 @@ export default {
     width: 40px;
     display: grid;
     place-items: center;
+  }
+  &__innerSpan {
+    text-decoration: none;
+
+    background-image: linear-gradient(
+      $secondary-font-color,
+      $secondary-font-color
+    );
+
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+
+    // &:after {
+    //   content: "";
+    //   width: 100%;
+    //   height: 2px;
+    //   background-color: $secondary-font-color;
+    //   position: absolute;
+    //   left: 0;
+    // }
   }
 
   &__logos {
@@ -99,7 +185,7 @@ export default {
   &__text {
     font-weight: 600;
     line-height: 1.5;
-    font-size: 1.16rem;
+    font-size: 1.25rem;
     margin: 20px 0;
   }
 
