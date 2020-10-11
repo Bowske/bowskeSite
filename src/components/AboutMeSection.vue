@@ -54,6 +54,7 @@ export default {
           ".aboutMeSection__backBar",
           ".aboutMeSection__text",
           ".aboutMeSection__innerSpan",
+          ".aboutMeSection__item",
         ],
         {
           autoAlpha: 0,
@@ -97,9 +98,25 @@ export default {
         }
       );
     },
+    logosAnimation() {
+      gsap.fromTo(
+        ".aboutMeSection__item",
+        { height: "-200px" },
+        {
+          autoAlpha: 1,
+          duration: 2,
+          stagger: 0.2,
+          height: "+=200px",
+          scrollTrigger: {
+            trigger: ".aboutMeSection__logos",
+          },
+        }
+      );
+    },
     aboutMeAllAnimations() {
       this.backBarAnimation();
       this.textAnimation();
+      this.logosAnimation();
     },
   },
   created() {},
