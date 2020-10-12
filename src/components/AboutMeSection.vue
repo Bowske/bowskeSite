@@ -101,12 +101,12 @@ export default {
     logosAnimation() {
       gsap.fromTo(
         ".aboutMeSection__item",
-        { height: "-200px" },
+        { y: "200%" },
         {
           autoAlpha: 1,
           duration: 2,
           stagger: 0.2,
-          height: "+=200px",
+          y: "-=200%",
           scrollTrigger: {
             trigger: ".aboutMeSection__logos",
           },
