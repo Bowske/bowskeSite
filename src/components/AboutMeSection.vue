@@ -8,9 +8,10 @@
           >Dbam o szczegóły, testuję nowe rozwiązania</span
         >, posiadam duże zamiłowanie do UI/UX'u.
       </p>
-      <button class="aboutMeSection__button">
+
+      <button @click="showCv()" ref="cvText" class="aboutMeSection__button">
         <Cv />
-        <p class="aboutMeSection__cvText" ref="cvText">wgląd do mojego CV</p>
+        <p class="aboutMeSection__cvText">wgląd do mojego CV</p>
       </button>
       <div class="aboutMeSection__logos">
         <div class="aboutMeSection__item"><vuelogo /></div>
@@ -36,6 +37,7 @@ import vuetifylogo from "@/../public/vuetifylogo.svg";
 import vuelogo from "@/../public/vuelogo.svg";
 
 import Cv from "@/../public/cv.svg";
+// import pdf from "vue-pdf";
 export default {
   name: "AboutMeSection",
   components: {
@@ -46,8 +48,13 @@ export default {
     typescriptlogo,
     vuetifylogo,
     vuelogo,
+    // pdf,
   },
   methods: {
+    showCv() {
+      window.open("../assets/cv.pdf");
+      return false;
+    },
     settingAutoAlpha() {
       gsap.set(
         [
@@ -90,11 +97,12 @@ export default {
         {
           autoAlpha: 1,
           duration: 2,
-          height: "+=100%",
+          height: "+=100vh",
           scrollTrigger: {
-            trigger: ".aboutMeSection__backBar",
+            trigger: ".aboutMeSection__text",
             start: "center bottom",
           },
+          ease: "power1.in",
         }
       );
     },
@@ -109,6 +117,7 @@ export default {
           y: "-=200%",
           scrollTrigger: {
             trigger: ".aboutMeSection__logos",
+            start: "center bottom",
           },
         }
       );
@@ -140,7 +149,7 @@ export default {
     top: 0;
     left: 0;
     width: 28vw;
-    height: 100%;
+    height: 100vh;
     z-index: -1;
     background-color: #f7f7f7;
   }

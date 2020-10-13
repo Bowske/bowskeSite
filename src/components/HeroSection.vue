@@ -33,14 +33,32 @@ export default {
       const tl = gsap.timeline();
       const headingRef = this.$refs.headingRef;
       const colorRef = this.$refs.colorRef;
+
+      let fromToVar = window.matchMedia("(-webkit-min-device-pixel-ratio: 2)")
+        .matches
+        ? "9.78em"
+        : "8.78em";
+      let toVar = window.matchMedia("(-webkit-min-device-pixel-ratio: 2)")
+        .matches
+        ? "7.25em"
+        : "6.55em";
+
       tl.fromTo(
         headingRef,
         { width: "0" },
-        { duration: "2", width: "9.78em", ease: "steps(16)" }
+        { duration: "2", width: fromToVar, ease: "steps(16)" }
       )
-        .to(headingRef, { duration: "0.5", width: "7.25em", ease: "steps(4)" })
+        .to(headingRef, {
+          duration: "0.5",
+          width: toVar,
+          ease: "steps(4)",
+        })
         .to(colorRef, { duration: "0", color: "#6c63ff" })
-        .to(headingRef, { duration: "0.5", width: "9.78em", ease: "steps(4)" }); //8.78 i 6.55
+        .to(headingRef, {
+          duration: "0.5",
+          width: fromToVar,
+          ease: "steps(4)",
+        }); //8.78 i 6.55   //9.78 i 7.25
 
       gsap.fromTo(
         headingRef,
@@ -110,6 +128,9 @@ export default {
     .hero-section__svg-wrapper {
       width: 80vw; // tu bedzie trzeba duzo ogarniania z mobilka i desktopem responisvness
       height: auto;
+      @media (min-width: 768px) {
+        width: 30vw;
+      }
 
       .hero-section__heading {
         border-right: 2px solid black;
